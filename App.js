@@ -2,20 +2,33 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 import StartGameScreen from "./screens/StartGameScreen";
 import { LinearGradient } from "expo-linear-gradient";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import GameScreen from "./screens/GameScreen";
+import GameOverScreen from "./screens/GameOver";
 
 export default function App() {
-  const [enteredNumber, setenteredNumber] = useState();
+  const [enteredNumber, setEnteredNumber] = useState(null); 
+  const [gameOver, setGameOver] = useState(true);
 
   function pickedNumberHandler(pickedNumber) {
-    setenteredNumber(pickedNumber);
+    setEnteredNumber(parseInt(pickedNumber)); // Ensure enteredNumber is stored as an integer
+    setGameOver(false);
+  }
+
+  useEffect(() => {
+    console.log("enteredNumber: " + enteredNumber);
+  }, [enteredNumber]);
+
+  function gamerOverHandler() {
+    setGameOver(true);
   }
 
   let screen = <StartGameScreen onPickNo={pickedNumberHandler} />;
 
-  if (enteredNumber) {
-    screen = <GameScreen  userNumber={enteredNumber}/>;
+  if (enteredNumber && gameOver) {
+    screen = <GameOverScreen />;
+  } else if (enteredNumber) {
+    screen = <GameScreen userNumber={enteredNumber} gameOver={gamerOverHandler} />;
   }
 
   return (
@@ -27,6 +40,8 @@ export default function App() {
     </LinearGradient>
   );
 }
+
+
 
 const styles = StyleSheet.create({
   rootScreen: {
