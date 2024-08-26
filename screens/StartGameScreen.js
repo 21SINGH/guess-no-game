@@ -1,17 +1,50 @@
-import { TextInput, View, StyleSheet } from "react-native";
+import { TextInput, View, StyleSheet, Alert } from "react-native";
 import PrimaryButton from "../components/PrimaryButton";
+import { useState } from "react";
 
-export default function StartGameScreen() {
+export default function StartGameScreen({onPickNo}) {
+  const [enteredNumber, setEnteredNumber] = useState("");
+
+  function noInputHandler(inputNo) {
+    setEnteredNumber(inputNo);
+  }
+
+  function restInputHandler() {
+    setEnteredNumber('');
+  }
+
+  function confirmInputHandler() {
+    const choosenNumber = parseInt(enteredNumber);
+
+    if (isNaN(choosenNumber) || choosenNumber <= 0 || choosenNumber > 99) {
+      Alert.alert(
+        "Invalid number",
+        "Number must be between 1 and 99",
+        [{ text: "Okay", style: "destructive", onPress: restInputHandler }]
+      );
+      return;
+    }
+
+    onPickNo(enteredNumber);
+  }
+
   return (
-    <View style={styles.inputContainer} >
-      <TextInput style={styles.input} maxLength={2} keyboardType="number-pad" autoCapitalize="none" />
+    <View style={styles.inputContainer}>
+      <TextInput
+        style={styles.input}
+        maxLength={2}
+        keyboardType="number-pad"
+        autoCapitalize="none"
+        value={enteredNumber}
+        onChangeText={noInputHandler}  // Changed from onChange to onChangeText
+      />
       <View style={styles.buttonContiner}>
         <View style={styles.buttonElement}>
-      <PrimaryButton> RESET</PrimaryButton>
-      </View>
-      <View style={styles.buttonElement}>
-      <PrimaryButton> START </PrimaryButton>
-      </View>
+          <PrimaryButton onPress={restInputHandler}>RESET</PrimaryButton>
+        </View>
+        <View style={styles.buttonElement}>
+          <PrimaryButton onPress={confirmInputHandler}>START</PrimaryButton>
+        </View>
       </View>
     </View>
   );
@@ -26,10 +59,10 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     elevation: 10,
     shadowColor: "purple",
-    shadowOffset: { width: 1, height: 4},
+    shadowOffset: { width: 5, height: 5 },
     shadowRadius: 5,
     shadowOpacity: 1,
-    alignItems : "center",
+    alignItems: "center",
   },
   input: {
     height: 50,
@@ -40,15 +73,13 @@ const styles = StyleSheet.create({
     color: "white",
     marginVertical: 8,
     fontWeight: "bold",
-    textAlign : "center",
+    textAlign: "center",
   },
-  buttonContiner : {
-    marginTop : 5,
-    flexDirection : "row",
-    // justifyContent : "space-around",
-    // width : "60%"
+  buttonContiner: {
+    marginTop: 5,
+    flexDirection: "row",
   },
-  buttonElement:{
+  buttonElement: {
     flex: 1,
-  }
+  },
 });

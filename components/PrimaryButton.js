@@ -1,6 +1,9 @@
 import { View, Text, Pressable, StyleSheet } from "react-native";
 
-export default function PrimaryButton({ children }) {
+export default function PrimaryButton({ children, onPress }) {
+  function pressHandler() {
+    onPress();
+  }
   return (
     <View style={styles.outterContainer}>
       <Pressable
@@ -9,6 +12,7 @@ export default function PrimaryButton({ children }) {
             ? [styles.innerContainer, styles.pressed]
             : styles.innerContainer
         }
+        onPress={pressHandler}
       >
         <View style={styles.continer}>
           <Text style={styles.text}>{children}</Text>
