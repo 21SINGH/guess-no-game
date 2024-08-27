@@ -98,6 +98,8 @@ const styles = StyleSheet.create({
   },
   text:{
     color : colors.text,
-    fontSize : 18
+    fontSize : 18,
+    fontFamily : 'boeing',
+    opacity : 0.5
   }
 });

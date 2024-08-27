@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
     color: "white",
     opacity: 1,
     textAlign: "center",
+    fontFamily : 'boeing'
   },
   pressed: {
     opacity: 0.5,

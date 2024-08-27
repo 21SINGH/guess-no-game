@@ -2,13 +2,24 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 import StartGameScreen from "./screens/StartGameScreen";
 import { LinearGradient } from "expo-linear-gradient";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import GameScreen from "./screens/GameScreen";
 import GameOverScreen from "./screens/GameOver";
+import { useFonts } from "expo-font";
+import AppLoading from "expo-app-loading";
 
 export default function App() {
-  const [enteredNumber, setEnteredNumber] = useState(null); 
+  const [enteredNumber, setEnteredNumber] = useState(null);
   const [gameOver, setGameOver] = useState(true);
+
+  const [fontsLoaded] = useFonts({
+    boeing: require("./assets/fonts/Boeing.ttf"),
+    future: require("./assets/fonts/FutureSpace.ttf"),
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
 
   function pickedNumberHandler(pickedNumber) {
     setEnteredNumber(parseInt(pickedNumber)); // Ensure enteredNumber is stored as an integer
@@ -40,8 +51,6 @@ export default function App() {
     </LinearGradient>
   );
 }
-
-
 
 const styles = StyleSheet.create({
   rootScreen: {
