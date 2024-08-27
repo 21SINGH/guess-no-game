@@ -10,8 +10,7 @@ export default function NumberContainer({ children }) {
 
 const styles = StyleSheet.create({
   continer: {
-    backgroundColor: "gray",
-    opacity: 0.8,
+    backgroundColor: "#353935",
     paddingVertical: 8,
     paddingHorizontal: 16,
     elevation: 2,
@@ -21,12 +20,12 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     color: "white",
     borderRadius: 10,
-    marginBottom: 10
   },
   text:{
     color: "white",
     opacity : 1,
     fontSize : 18,
     fontWeight: "bold",
+    textAlign : "center",
   }
 });

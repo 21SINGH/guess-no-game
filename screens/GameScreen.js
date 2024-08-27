@@ -4,6 +4,7 @@ import colors from "../constants/colors";
 import { useState, useEffect } from "react";
 import NumberContainer from "../components/game/NumberContainer";
 import PrimaryButton from "../components/ui/PrimaryButton";
+import { Ionicons } from "@expo/vector-icons"
 
 let minBound = 1;
 let maxBound = 100;
@@ -44,18 +45,21 @@ export default function GameScreen({ userNumber, gameOver }) {
       <View style={styles.container}>
         <Title>Oponents Game</Title>
       </View>
-      <NumberContainer>{currentGuess}</NumberContainer>
-      <View>
+      <View style={styles.secondContainer}>
+        <NumberContainer>{currentGuess}</NumberContainer>
+      </View>
+
+      <View style={styles.thirdContainer}>
         <Title>Heigher or Lower ?</Title>
         <View style={styles.buttonContiner}>
           <View style={styles.buttonElement}>
             <PrimaryButton onPress={nextGuessHandler.bind(this, "lower")}>
-              -
+            <Ionicons name="remove-circle-outline" size={20} color="black" />
             </PrimaryButton>
           </View>
           <View style={styles.buttonElement}>
             <PrimaryButton onPress={nextGuessHandler.bind(this, "greater")}>
-              +
+            <Ionicons name="add-circle-outline" size={20} color="black" />
             </PrimaryButton>
           </View>
         </View>
@@ -67,27 +71,43 @@ export default function GameScreen({ userNumber, gameOver }) {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    padding: 12,
+    padding: 30,
     marginHorizontal: 50,
+    marginVertical: 200,
     backgroundColor: "black",
-    borderRadius: 10,
+    borderRadius: 8,
     elevation: 10,
     shadowColor: colors.shadowColor,
-    shadowOffset: { width: 0, height: 5 },
+    shadowOffset: { width: 5, height: 5 },
     shadowRadius: 5,
     shadowOpacity: 1,
+    // alignItems : "center",
   },
   container: {
     borderBottomWidth: 1,
     borderBottomColor: "gray",
     width: "100%", // Ensures the text takes up the full width of its container
-    marginBottom: 10,
+    // marginBottom: 30,
+    flex: 1,
+    // padding:10
   },
+  secondContainer: {
+    flex: 2,
+    borderBottomWidth: 1,
+    borderBottomColor: "gray",
+    width: "100%", // Ensures the text takes up the full width of its container
+    marginBottom: 30,
+    justifyContent: "center",
+  },
+  thirdContainer: {
+    flex: 2,
+  },
+
   text: {
     color: colors.text,
   },
   buttonContiner: {
-    marginTop: 5,
+    marginTop: 10,
     flexDirection: "row",
   },
   buttonElement: {

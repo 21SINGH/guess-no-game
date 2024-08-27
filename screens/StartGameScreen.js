@@ -1,8 +1,8 @@
-import { TextInput, View, StyleSheet, Alert } from "react-native";
+import { TextInput, View, StyleSheet, Alert, Text } from "react-native";
 import PrimaryButton from "../components/ui/PrimaryButton";
 import { useState } from "react";
 import colors from "../constants/colors";
-
+import Title from "../components/ui/Title";
 export default function StartGameScreen({ onPickNo }) {
   const [enteredNumber, setEnteredNumber] = useState("");
 
@@ -28,21 +28,27 @@ export default function StartGameScreen({ onPickNo }) {
   }
 
   return (
-    <View style={styles.inputContainer}>
-      <TextInput
-        style={styles.input}
-        maxLength={2}
-        keyboardType="number-pad"
-        autoCapitalize="none"
-        value={enteredNumber}
-        onChangeText={noInputHandler} // Changed from onChange to onChangeText
-      />
-      <View style={styles.buttonContiner}>
-        <View style={styles.buttonElement}>
-          <PrimaryButton onPress={restInputHandler}>RESET</PrimaryButton>
-        </View>
-        <View style={styles.buttonElement}>
-          <PrimaryButton onPress={confirmInputHandler}>START</PrimaryButton>
+    <View style={styles.rootContainer}>
+      <View style={styles.container}>
+        <Title>Guess The No</Title>
+      </View>
+      <View style={styles.inputContainer}>
+      <Text style={styles.text}>Enter a NO</Text>
+        <TextInput
+          style={styles.input}
+          maxLength={2}
+          keyboardType="number-pad"
+          autoCapitalize="none"
+          value={enteredNumber}
+          onChangeText={noInputHandler} // Changed from onChange to onChangeText
+        />
+        <View style={styles.buttonContiner}>
+          <View style={styles.buttonElement}>
+            <PrimaryButton onPress={restInputHandler}>RESET</PrimaryButton>
+          </View>
+          <View style={styles.buttonElement}>
+            <PrimaryButton onPress={confirmInputHandler}>START</PrimaryButton>
+          </View>
         </View>
       </View>
     </View>
@@ -50,10 +56,19 @@ export default function StartGameScreen({ onPickNo }) {
 }
 
 const styles = StyleSheet.create({
+  rootContainer : {
+    flex : 1,
+    marginTop : 100,
+    alignItems : 'center',
+  },
+  container: {
+    width: "100%", // Ensures the text takes up the full width of its container
+    marginBottom: 10,
+  },
   inputContainer: {
     padding: 16,
     marginHorizontal: 24,
-    marginTop: 100,
+    marginTop: 36,
     backgroundColor: colors.background,
     borderRadius: 8,
     elevation: 10,
@@ -81,4 +96,8 @@ const styles = StyleSheet.create({
   buttonElement: {
     flex: 1,
   },
+  text:{
+    color : colors.text,
+    fontSize : 18
+  }
 });
