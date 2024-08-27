@@ -11,28 +11,28 @@ This React Native app is a fun guessing game where the user picks a number, and 
 
 ## Images
 
-App flow :
+## App flow:
 
-<div align="center">
-  <img src="./assets/image/1.png" alt="Image 1" width="500px" height="500px">
+<div align="center" style="margin-bottom: 10px;">
+  <img src="./assets/image/1.png" alt="Image 1" width="300px" height="500px">
 </div>
 
-<div align="center">
-  <img src="./assets/image/2.png" alt="Image 2" width="500px" height="500px">
+<div align="center" style="margin-bottom: 10px;">
+  <img src="./assets/image/2.png" alt="Image 2" width="300px" height="500px">
 </div>
 
-<div align="center">
-  <img src="./assets/image/3.png" alt="Image 3" width="500px" height="500px">
+<div align="center" style="margin-bottom: 10px;">
+  <img src="./assets/image/3.png" alt="Image 3" width="300px" height="500px">
 </div>
 
-<div align="center">
-  <img src="./assets/image/4.png" alt="Image 4" width="500px" height="500px">
+<div align="center" style="margin-bottom: 10px;">
+  <img src="./assets/image/4.png" alt="Image 4" width="300px" height="500px">
 </div>
 
-<div align="center">
-  <img src="./assets/image/5.png" alt="Image 5" width="500px" height="500px">
+<div align="center" style="margin-bottom: 10px;">
+  <img src="./assets/image/5.png" alt="Image 5" width="300px" height="500px">
 </div>
 
-<div align="center">
-  <img src="./assets/image/6.png" alt="Image 6" width="500px" height="500px">
+<div align="center" style="margin-bottom: 10px;">
+  <img src="./assets/image/6.png" alt="Image 6" width="300px" height="500px">
 </div>
