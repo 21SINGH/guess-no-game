@@ -22,8 +22,9 @@ export default function App() {
     console.log("enteredNumber: " + enteredNumber);
   }, [enteredNumber]);
 
-  function gamerOverHandler() {
+  function gamerOverHandler(noOfROunds) {
     setGameOver(true);
+    setRounds(noOfROunds);
   }
 
   function startNewGameHandler() {

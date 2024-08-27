@@ -8,7 +8,7 @@ export default function Title({ children }) {
 const styles = StyleSheet.create({
   title: {
     fontFamily : 'boeing',
-    fontSize: 32,
+    fontSize: 25,
     // fontWeight: "bold",
     textAlign: "center",
     // borderWidth: 1,
