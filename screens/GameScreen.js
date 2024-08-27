@@ -14,6 +14,11 @@ export default function GameScreen({ userNumber, gameOver }) {
   const [currentGuess, setCurrentGuess] = useState(intialGuess);
 
   useEffect(() => {
+    minBound = 1;
+    maxBound = 100;
+  },[])
+
+  useEffect(() => {
     if (currentGuess === userNumber) {
       console.log("number matched");
       gameOver();

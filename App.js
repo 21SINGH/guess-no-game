@@ -11,15 +11,7 @@ import AppLoading from "expo-app-loading";
 export default function App() {
   const [enteredNumber, setEnteredNumber] = useState(null);
   const [gameOver, setGameOver] = useState(true);
-
-  // const [fontsLoaded] = useFonts({
-  //   boeing: require("./assets/fonts/Boeing.ttf"),
-  //   future: require("./assets/fonts/FutureSpace.ttf"),
-  // });
-
-  // if (!fontsLoaded) {
-  //   return <AppLoading />;
-  // }
+  const [rounds, setRounds] = useState(0);
 
   function pickedNumberHandler(pickedNumber) {
     setEnteredNumber(parseInt(pickedNumber)); // Ensure enteredNumber is stored as an integer
@@ -34,12 +26,26 @@ export default function App() {
     setGameOver(true);
   }
 
+  function startNewGameHandler() {
+    setEnteredNumber(null);
+    setGameOver(true);
+    setRounds(null);
+  }
+
   let screen = <StartGameScreen onPickNo={pickedNumberHandler} />;
 
   if (enteredNumber && gameOver) {
-    screen = <GameOverScreen />;
+    screen = (
+      <GameOverScreen
+        roundNo={rounds}
+        userNo={enteredNumber}
+        onStartNewGame={startNewGameHandler}
+      />
+    );
   } else if (enteredNumber) {
-    screen = <GameScreen userNumber={enteredNumber} gameOver={gamerOverHandler} />;
+    screen = (
+      <GameScreen userNumber={enteredNumber} gameOver={gamerOverHandler} />
+    );
   }
 
   return (

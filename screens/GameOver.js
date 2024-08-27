@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Image } from "react-native";
 import Title from "../components/ui/Title";
 import PrimaryButton from "../components/ui/PrimaryButton";
 
-export default function GameOverScreen() {
+export default function GameOverScreen({roundNo, userNo, onStartNewGame}) {
   return (
     <View style={styles.rootContainer}>
       <Title>Game Over</Title>
@@ -14,10 +14,10 @@ export default function GameOverScreen() {
         />
       </View>
       <Text style={styles.text}>
-        Your Phone needed <Text style={styles.heilight}>X</Text> round to guess
-        the <Text style={styles.heilight}>Y</Text> no
+        Your Phone needed <Text style={styles.heilight}>{roundNo}</Text> round to guess
+        the <Text style={styles.heilight}>{userNo}</Text> no
       </Text>
-      <PrimaryButton>Play Again</PrimaryButton>
+      <PrimaryButton onPress={onStartNewGame}>Play Again</PrimaryButton>
     </View>
   );
 }
