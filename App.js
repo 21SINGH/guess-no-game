@@ -12,14 +12,14 @@ export default function App() {
   const [enteredNumber, setEnteredNumber] = useState(null);
   const [gameOver, setGameOver] = useState(true);
 
-  const [fontsLoaded] = useFonts({
-    boeing: require("./assets/fonts/Boeing.ttf"),
-    future: require("./assets/fonts/FutureSpace.ttf"),
-  });
+  // const [fontsLoaded] = useFonts({
+  //   boeing: require("./assets/fonts/Boeing.ttf"),
+  //   future: require("./assets/fonts/FutureSpace.ttf"),
+  // });
 
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  }
+  // if (!fontsLoaded) {
+  //   return <AppLoading />;
+  // }
 
   function pickedNumberHandler(pickedNumber) {
     setEnteredNumber(parseInt(pickedNumber)); // Ensure enteredNumber is stored as an integer
